@@ -19,7 +19,7 @@ export default function MenuSideBar({
 }: MenuSideBarProps) {
   return (
     <div
-      className={`flex top-0 right-0 w-[40vw] bg-sideBar py-20 justify-center text-white fixed h-full ease-in-out duration-500 shadow-2xl ${
+      className={`flex top-0 right-0 w-[40vw] bg-sideBar py-20 justify-center text-white fixed h-full ease-in-out duration-500 shadow-2xl z-10 ${
         openSideBar ? "translate-x-0" : "translate-x-full"
       }`}
     >

@@ -2,6 +2,7 @@ import Header from "@/components/HeaderComponent";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
+import Footer from "@/components/FooterComponent";
 
 /** Font used throughout the application */
 const libreFranklin = Libre_Franklin({ subsets: ["latin"] });
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${libreFranklin.className} bg-backgroundColorLight`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
