@@ -14,7 +14,7 @@ module.exports = {
       },
       colors: {
         'primary': "#185AB0",
-        'footerColor': "#8080800E",
+        'footerColor': "#80808030",
         "backgroundColorLight": "#F5F5F4",
         "sideBar": "#3972BB"
       }
