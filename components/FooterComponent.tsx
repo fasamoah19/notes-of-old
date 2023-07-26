@@ -7,7 +7,7 @@ import Link from "next/link";
  */
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 w-full bg-footerColor">
+    <footer className="flex flex-col w-full bg-footerColor">
       <div className="flex flex-col md:flex-row mx-16 my-8 items-center">
         {/** Links */}
         <div className="flex flex-col gap-y-8 font-bold text-sm">
