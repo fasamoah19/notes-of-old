@@ -16,7 +16,7 @@ export default function Header() {
   const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 
   return (
-    <header className="mt-6 mx-16">
+    <header className="mt-6 max-w-6xl mx-16 xl:mx-auto">
       <div className="flex flex-row items-center">
         {/** Logo */}
         <Link

@@ -1,28 +1,30 @@
+import ImageGrid from "@/components/ImageGrid";
 import { supabase } from "@/lib";
-import { Database } from "@/types/supabase";
-import Image from "next/image";
+import { Artist } from "@/lib/constants";
+import { generateImageLinkColumns } from "@/lib/helperFunctions";
 
-type Artist = Database["public"]["Tables"]["artists"]["Row"];
-
+/**
+ * Home Page
+ *
+ * @returns Home component
+ */
 export default async function Home() {
-  const { data: artist, error } = await supabase
-    .from("artists")
-    .select()
-    .order("id")
-    .limit(1)
-    .single();
+  const { singleColumn, twoColumns, threeColumns } = await getArtistImages();
 
   return (
-    <main className="pl-4 pt-4">
-      <p>{artist?.name}</p>
-      <Image
-        src={`${artist?.image_links?.[0] ?? "#"}`}
-        alt={`${artist?.name} Image - Image No: 1`}
-        width={400}
-        height={400}
-      />
-      <p>{artist?.bio}</p>
-      <p>{artist?.dob}</p>
+    <main className="pt-4 max-w-6xl mx-16 xl:mx-auto">
+      <div className="flex justify-center my-10">
+        <p className="font-extralight italic text-sm">
+          Gallery Art for Jazz Artists of the 50s, 60s and 70s
+        </p>
+      </div>
+      <ImageGrid singleColumn={singleColumn} twoColumns={twoColumns} threeColumns={threeColumns} />
     </main>
   );
+}
+
+/** Retrieve's the artist images  */
+async function getArtistImages() {
+  const { data: artists, error } = await supabase.from("artists").select();
+  return generateImageLinkColumns(artists as Artist[]);
 }
