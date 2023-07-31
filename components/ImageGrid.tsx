@@ -90,7 +90,7 @@ export default function ImageGrid({
   }, [state.firstColumnOfThreeSize, state.secondColumnOfThreeSize, state.thirdColumnOfThreeSize, state.firstColumnOfTwoSize, state.secondColumnOfTwoSize])
 
   return (
-    <div className="mb-20">
+    <div>
       <div className="hidden lg:grid lg:grid-cols-3 gap-4">
         <ImageGridColumn size={state.firstColumnOfThreeSize} ref={threeColumnsOne} links={threeColumns[1]} />
         <ImageGridColumn size={state.secondColumnOfThreeSize} ref={threeColumnsTwo} links={threeColumns[2]} />

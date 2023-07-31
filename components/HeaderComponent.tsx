@@ -21,7 +21,7 @@ export default function Header() {
         {/** Logo */}
         <Link
           href={"/"}
-          className="flex flex-row flex-1 font-black text-xl md:text-2xl"
+          className="flex flex-row font-black text-xl md:text-2xl"
         >
           <p className="text-primary">notes</p>
           <p>&nbsp;</p>
@@ -58,7 +58,7 @@ function DesktopHeaderLinks({ pathname }: HeaderLinksProps) {
   return (
     <nav className="hidden md:flex flex-row font-bold text-sm gap-x-8 lg:gap-x-16">
       <Link
-        href={"#"}
+        href={"/"}
         className={pathname == "/" ? "text-primary" : "text-black"}
       >
         home
@@ -106,7 +106,7 @@ function MobileHeaderLinks({
         openSideBar={openSideBar}
         setOpenSideBar={setOpenSideBar}
       />
-      <MenuSideBar pathname={pathname} openSideBar={openSideBar} />
+      <MenuSideBar pathname={pathname} openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
     </div>
   );
 }
