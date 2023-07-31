@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 
 /** Props necessary for the component */
 type MenuSideBarProps = {
   pathname: string;
   openSideBar: boolean;
+  setOpenSideBar: Dispatch<SetStateAction<boolean>>;
 };
 
 /**
@@ -16,6 +18,7 @@ type MenuSideBarProps = {
 export default function MenuSideBar({
   pathname,
   openSideBar,
+  setOpenSideBar
 }: MenuSideBarProps) {
   return (
     <div
@@ -25,8 +28,9 @@ export default function MenuSideBar({
     >
       <nav className="mt-20 text-2xl flex flex-col font-semibold text-white gap-y-12 items-center">
         <Link
-          href={"#"}
+          href={"/"}
           className={pathname == "/" ? "text-black" : "text-white"}
+          onClick={() => setOpenSideBar(false)}
         >
           home
         </Link>
@@ -35,6 +39,7 @@ export default function MenuSideBar({
           className={
             pathname.startsWith("contact") ? "text-black" : "text-white"
           }
+          onClick={() => setOpenSideBar(false)}
         >
           contact
         </Link>
@@ -43,6 +48,7 @@ export default function MenuSideBar({
           className={
             pathname.startsWith("contact") ? "text-black" : "text-white"
           }
+          onClick={() => setOpenSideBar(false)}
         >
           about us
         </Link>

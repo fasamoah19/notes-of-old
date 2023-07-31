@@ -1,6 +1,6 @@
 "use client";
 
-import { configureArtistNameFromLink } from "@/lib/helperFunctions";
+import { configureArtistNameFromLink, getSlug } from "@/lib/helperFunctions";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,12 +33,12 @@ export default function ImageGridItem({ link }: ImageGridItemProps) {
           <div className="flex flex-row justify-center">{artistName}</div>
           <div className="blue-line-long -translate-x-10 group-hover:translate-x-0 absolute right-0 justify-end duration-500"></div>
         </div>
-        {/** Links and Blue Link */}
+        {/** Links and Blue Line */}
         <div className="flex flex-row gap-x-2 my-4 items-center translate-x-8 group-hover:translate-x-0 duration-700">
           <div className="blue-line-short"></div>
           {/** Links */}
           <div className="flex flex-row space-x-6 items-center">
-            <Link href={"#"} className="underline text-xs">
+            <Link href={`/artist/${getSlug(artistName)}`} className="underline text-xs">
               View Artist
             </Link>
             <Link href={"#"} className="underline text-xs">

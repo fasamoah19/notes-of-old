@@ -17,6 +17,7 @@ export interface Database {
           id: number
           image_links: string[] | null
           name: string | null
+          slug: string | null
         }
         Insert: {
           bio?: string | null
@@ -25,6 +26,7 @@ export interface Database {
           id?: number
           image_links?: string[] | null
           name?: string | null
+          slug?: string | null
         }
         Update: {
           bio?: string | null
@@ -33,6 +35,7 @@ export interface Database {
           id?: number
           image_links?: string[] | null
           name?: string | null
+          slug?: string | null
         }
         Relationships: []
       }

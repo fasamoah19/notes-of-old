@@ -7,12 +7,12 @@ import Link from "next/link";
  */
 export default function Footer() {
   return (
-    <footer className="flex flex-col w-full bg-footerColor">
+    <footer className="flex flex-col w-full bg-footerColor mt-20">
       <div className="flex flex-col md:flex-row mx-16 my-8 items-center">
         {/** Links */}
         <div className="flex flex-col gap-y-8 font-bold text-sm">
           <Link
-            href={"#"}
+            href={"/"}
             className={
               "text-black hover:text-primary transition-all duration-200"
             }

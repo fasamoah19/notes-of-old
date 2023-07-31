@@ -89,3 +89,19 @@ export const configureArtistNameFromLink = (link: string) => {
 
   return finalName.trim();
 };
+
+/**
+ * Helper function that generates a slug from a given value
+ * 
+ * @param value Value that will be converted to a slug
+ * @returns Slug variation of the value passed
+ */
+export const getSlug = (value: string) => {
+  return value
+    .toLowerCase()
+    .trim()
+    .normalize("NFD").replace(/\p{Diacritic}/gu, "")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
