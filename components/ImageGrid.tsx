@@ -50,7 +50,7 @@ export default function ImageGrid({
     let firstColumnOfTwoSize = state.firstColumnOfTwoSize
     let secondColumnOfTwoSize = state.secondColumnOfTwoSize
 
-    if (threeColumnsOne.current && threeColumnsTwo.current && threeColumnsThree.current && threeColumnsOne.current.checkVisibility()) {
+    if (threeColumnsOne.current && threeColumnsTwo.current && threeColumnsThree.current) {
       if (threeColumnsOne.current.offsetHeight > 3300) {
         firstColumnOfThreeSize = firstColumnOfThreeSize - 1
         firstColumnOfTwoSize = firstColumnOfThreeSize
@@ -64,7 +64,7 @@ export default function ImageGrid({
       }
     }
 
-    if (twoColumnsOne.current && twoColumnsTwo.current && twoColumnsOne.current.checkVisibility()) {
+    if (twoColumnsOne.current && twoColumnsTwo.current) {
       if (twoColumnsOne.current.offsetHeight > 3300) {
         firstColumnOfTwoSize = firstColumnOfTwoSize - 1
         firstColumnOfThreeSize = firstColumnOfTwoSize
