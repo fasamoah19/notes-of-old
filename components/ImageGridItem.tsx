@@ -17,12 +17,14 @@ type ImageGridItemProps = {
  */
 export default function ImageGridItem({ link }: ImageGridItemProps) {
   const artistName = configureArtistNameFromLink(link);
+  const imageNumberStr = link.split("artist-images/")[1].match(/\d+/)?.[0] ?? ""
+  const imageNumber = parseInt(imageNumberStr) - 1
 
   return (
     <div className="image-grid-item group" key={link}>
       <Image
         src={link}
-        alt={`${link.split("artist-images/")[1].split("-%d")[0]}`}
+        alt={`${link.split("artist-images/")[1]}`}
         width={416}
         height={590}
       />
@@ -41,7 +43,7 @@ export default function ImageGridItem({ link }: ImageGridItemProps) {
             <Link href={`/artist/${getSlug(artistName)}`} className="underline text-xs">
               View Artist
             </Link>
-            <Link href={"#"} className="underline text-xs">
+            <Link href={`/artist/${getSlug(artistName)}/image/${imageNumber}`} className="underline text-xs">
               View Image
             </Link>
           </div>

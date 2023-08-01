@@ -1,7 +1,9 @@
 "use client";
 
+import { getSlug } from "@/lib/helperFunctions";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 /** Props necessary for the component */
 type MoreImagesComponentProps = {
@@ -12,7 +14,7 @@ type MoreImagesComponentProps = {
 
 /**
  * The More Images section component
- * 
+ *
  * @param param0 MoreImagesComponentProps
  * @returns MoreImagesComponent
  */
@@ -41,12 +43,12 @@ type MoreImageComponentItemProps = {
   firstName: string;
   restOfName: string;
   index: number;
-}
+};
 
 /**
  * Single Item displayed in the MoreImagesComponent
  * section
- * 
+ *
  * @param param0 MoreImageComponentItemProps
  * @returns MoreImageComponentItem
  */
@@ -77,7 +79,14 @@ function MoreImageComponentItem({
       <div className="hover-image-grid-text">
         <div className="space-y-2">
           {/** TODO: Update the  */}
-          <div className="flex flex-row justify-center text-xs">View Image</div>
+          <Link
+            href={`/artist/${getSlug(`${firstName} ${restOfName}`)}/image/${
+              index
+            }`}
+            className="hover:underline text-[10px] pl-1 md:pl-0 md:text-xs flex flex-row justify-center"
+          >
+            View Image
+          </Link>
           <div className="blue-line-long"></div>
         </div>
       </div>
