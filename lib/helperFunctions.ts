@@ -1,3 +1,4 @@
+import { supabase } from "@/lib";
 import { Artist } from "./constants";
 
 /**
@@ -33,8 +34,7 @@ export const generateImageLinkColumns = (artists: Artist[]) => {
   let links: string[] = [];
 
   artists?.map((artist) => {
-    // links.push(...artist.image_links!);
-    links.push(artist.image_links?.[5] ?? "")
+    links.push(artist.image_links?.[Math.floor(Math.random() * 9)] ?? "")
   });
 
   const shuffedLinks = shuffleArray(links);
@@ -104,4 +104,35 @@ export const getSlug = (value: string) => {
     .replace(/[^\w\s-]/g, "")
     .replace(/[\s_-]+/g, "-")
     .replace(/^-+|-+$/g, "");
+};
+
+/**
+ * Retrieve's the artist data from the slug
+ *
+ * @param slug
+ * @returns Artist object and an error object (if an
+ * error was reached)
+ */
+export async function getArtistBySlug(slug: string) {
+  const { data: artist, error } = await supabase
+    .from("artists")
+    .select()
+    .eq("slug", slug)
+    .single();
+  return { artist, error };
+}
+
+/**
+ * Helper function that splits a single string containing
+ * the artists name into multiple strings
+ *
+ * @param name Artist name
+ * @returns Artist's first name and rest of their name (could be three names)
+ */
+export const splitArtistName = (name?: string) => {
+  const splitName = name?.split(" ");
+  const firstName = splitName?.[0];
+  const restOfName = splitName?.splice(1, splitName.length).join(" ");
+
+  return { firstName, restOfName };
 };

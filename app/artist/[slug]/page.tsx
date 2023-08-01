@@ -1,9 +1,8 @@
-import { supabase } from "@/lib";
 import Image from "next/image";
 import LongBlueLineAnimate from "@/components/LongBlueLineAnimate";
 import { Artist } from "@/lib/constants";
-import { motion } from 'framer-motion'
 import MoreImagesComponent from "@/components/MoreImagesComponent";
+import { getArtistBySlug, splitArtistName } from "@/lib/helperFunctions";
 
 type SelectedArtistPageProps = {
   params: { slug: string };
@@ -68,6 +67,7 @@ function DesktopDesign({
             height={500}
             width={500}
             alt={`${artist?.name} Image`}
+            className="shadow-lg"
           />
           <p className="text-gray-500 text-[10px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -112,6 +112,7 @@ function DesktopDesign({
             height={500}
             width={500}
             alt={`${artist?.name} Image`}
+            className="shadow-lg"
           />
           <p className="text-gray-500 text-[10px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -122,22 +123,11 @@ function DesktopDesign({
         placement="justify-end"
         lineType={"blue-line-long"}
       />
-      <MoreImagesComponent imageLinks={artist.image_links!} firstName={firstName} restOfName={restOfName} />
-      {/* <div className="flex flex-col items-center">
-        <div className="flex flex-row overflow-x-scroll space-x-2 mx-8">
-          {artist
-            ?.image_links!
-            .map((link, index) => (
-              <Image
-                src={link}
-                key={link}
-                height={424}
-                width={180}
-                alt={`${firstName} ${restOfName} Image ${index}`}
-              />
-            ))}
-        </div>
-      </div> */}
+      <MoreImagesComponent
+        imageLinks={artist.image_links!}
+        firstName={firstName}
+        restOfName={restOfName}
+      />
     </div>
   );
 }
@@ -198,37 +188,11 @@ function MobileDesign({
         placement="justify-start"
         lineType={"blue-line-full"}
       />
+      <MoreImagesComponent
+        imageLinks={artist.image_links!}
+        firstName={firstName}
+        restOfName={restOfName}
+      />
     </div>
   );
 }
-
-/**
- * Retrieve's the artist data from the slug
- *
- * @param slug
- * @returns Artist object and an error object (if an
- * error was reached)
- */
-async function getArtistBySlug(slug: string) {
-  const { data: artist, error } = await supabase
-    .from("artists")
-    .select()
-    .eq("slug", slug)
-    .single();
-  return { artist, error };
-}
-
-/**
- * Helper function that splits a single string containing
- * the artists name into multiple strings
- *
- * @param name Artist name
- * @returns Artist's first name and rest of their name (could be three names)
- */
-const splitArtistName = (name?: string) => {
-  const splitName = name?.split(" ");
-  const firstName = splitName?.[0];
-  const restOfName = splitName?.splice(1, splitName.length).join(" ");
-
-  return { firstName, restOfName };
-};
