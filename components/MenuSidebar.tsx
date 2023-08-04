@@ -35,7 +35,7 @@ export default function MenuSideBar({
           home
         </Link>
         <Link
-          href={"#"}
+          href={"/contact"}
           className={
             pathname.startsWith("contact") ? "text-black" : "text-white"
           }

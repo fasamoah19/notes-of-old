@@ -64,7 +64,7 @@ function DesktopHeaderLinks({ pathname }: HeaderLinksProps) {
         home
       </Link>
       <Link
-        href={"#"}
+        href={"/contact"}
         className={
           pathname.startsWith("contact") ? "text-primary" : "text-black"
         }

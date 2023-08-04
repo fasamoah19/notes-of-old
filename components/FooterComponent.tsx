@@ -20,7 +20,7 @@ export default function Footer() {
             home
           </Link>
           <Link
-            href={"#"}
+            href={"/contact"}
             className={
               "text-black hover:text-primary transition-all duration-200"
             }
