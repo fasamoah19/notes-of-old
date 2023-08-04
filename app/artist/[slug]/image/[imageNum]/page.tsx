@@ -110,7 +110,7 @@ function DesktopDesign({
             mi. Aliquam in hendrerit urna.
           </p>
           {/** Download Button */}
-          <CustomButton />
+          <CustomButton text="Download" />
         </div>
       </div>
       <LongBlueLineAnimate
@@ -134,7 +134,7 @@ function DesktopDesign({
 }
 
 /**
- *
+ * Mobile design for the Selected Image Page
  *
  * @param param0 MobileAndDesktopDesignProps
  * @returns MobileDesign component
@@ -177,7 +177,7 @@ function MobileDesign({
       </p>
       {/** Download Button */}
       <div className="flex flex-row justify-center">
-        <CustomButton />
+        <CustomButton text="Download" />
       </div>
       <LongBlueLineAnimate
         placement="justify-end"
