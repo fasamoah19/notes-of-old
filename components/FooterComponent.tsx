@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="flex flex-col w-full bg-footerColor mt-20">
       <div className="flex flex-col md:flex-row mx-16 my-8 items-center">
         {/** Links */}
-        <div className="flex flex-col gap-y-8 font-bold text-sm">
+        <div className="flex flex-col gap-y-8 font-bold text-sm items-center">
           <Link
             href={"/"}
             className={
@@ -28,7 +28,7 @@ export default function Footer() {
             contact
           </Link>
           <Link
-            href={"#"}
+            href={"/about"}
             className={
               "text-black hover:text-primary transition-all duration-200"
             }

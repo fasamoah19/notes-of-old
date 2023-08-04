@@ -66,15 +66,15 @@ function DesktopHeaderLinks({ pathname }: HeaderLinksProps) {
       <Link
         href={"/contact"}
         className={
-          pathname.startsWith("contact") ? "text-primary" : "text-black"
+          pathname.startsWith("/contact") ? "text-primary" : "text-black"
         }
       >
         contact
       </Link>
       <Link
-        href={"#"}
+        href={"/about"}
         className={
-          pathname.startsWith("contact") ? "text-primary" : "text-black"
+          pathname.startsWith("/about") ? "text-primary" : "text-black"
         }
       >
         about us

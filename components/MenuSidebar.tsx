@@ -37,16 +37,16 @@ export default function MenuSideBar({
         <Link
           href={"/contact"}
           className={
-            pathname.startsWith("contact") ? "text-black" : "text-white"
+            pathname.startsWith("/contact") ? "text-black" : "text-white"
           }
           onClick={() => setOpenSideBar(false)}
         >
           contact
         </Link>
         <Link
-          href={"#"}
+          href={"/about"}
           className={
-            pathname.startsWith("contact") ? "text-black" : "text-white"
+            pathname.startsWith("/about") ? "text-black" : "text-white"
           }
           onClick={() => setOpenSideBar(false)}
         >
