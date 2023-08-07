@@ -3,16 +3,43 @@ import LongBlueLineAnimate from "@/components/LongBlueLineAnimate";
 import { Artist } from "@/lib/constants";
 import MoreImagesComponent from "@/components/MoreImagesComponent";
 import { getArtistBySlug, splitArtistName } from "@/lib/helperFunctions";
+import { Metadata, ResolvingMetadata } from "next";
 
+/** Props necessary for the component and metadata */
 type SelectedArtistPageProps = {
   params: { slug: string };
 };
 
+/** Props used for design */
 type MobileAndDesktopDesignProps = {
   firstName: string;
   restOfName: string;
   artist: Artist;
 };
+
+/**
+ * Generates metadata for the page
+ * 
+ * @param param0 params for the link
+ * @param parent Prior metadata
+ * @returns Promise
+ */
+export async function generateMetadata(
+  { params }: SelectedArtistPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { artist, error } = await getArtistBySlug(params.slug);
+
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: artist?.name,
+    description: `${artist?.bio?.substring(0, 140)}...`,
+    openGraph: {
+      images: [artist?.image_links?.[0] ?? '', ...previousImages]
+    }
+  }
+}
 
 /**
  * Selected Artist Page

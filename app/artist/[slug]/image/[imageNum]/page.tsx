@@ -9,11 +9,36 @@ import Image from "next/image";
 import CustomButton from "@/components/CustomButton";
 import MoreImagesComponent from "@/components/MoreImagesComponent";
 import Link from "next/link";
+import { Metadata, ResolvingMetadata } from "next";
 
 /** Props necessary for the component */
 type SelectedImagePageProps = {
   params: { slug: string; imageNum: string };
 };
+
+/**
+ * Generates metadata for the selected image page
+ * 
+ * @param param0 SelectedImagePageProps
+ * @param parent Prior metadata from previous pages
+ * @returns Metadata
+ */
+export async function generateMetadata(
+  { params }: SelectedImagePageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { artist, error } = await getArtistBySlug(params.slug);
+
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `${artist?.name} Image ${params.imageNum}`,
+    description: `${artist?.name} Image ${params.imageNum} download.`,
+    openGraph: {
+      images: [artist?.image_links?.[0] ?? '', ...previousImages]
+    }
+  }
+}
 
 /**
  * Selected Image Page
@@ -84,7 +109,7 @@ function DesktopDesign({
         <div className="flex flex-col space-y-6 items-center">
           {/** Selected Image */}
           <Image
-            src={`${artist?.image_links?.[parseInt(imageNum)]}`}
+            src={`${artist?.image_links?.[parseInt(imageNum) - 1]}`}
             height={500}
             width={500}
             alt={`${artist?.name} Image`}
@@ -162,7 +187,7 @@ function MobileDesign({
       {/** Selected Image */}
       <div className="flex flex-col space-y-6 items-center">
         <Image
-          src={`${artist?.image_links?.[parseInt(imageNum)]}`}
+          src={`${artist?.image_links?.[parseInt(imageNum) - 1]}`}
           height={500}
           width={500}
           alt={`${artist?.name} Image`}

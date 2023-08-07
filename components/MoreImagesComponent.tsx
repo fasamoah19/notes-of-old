@@ -81,7 +81,7 @@ function MoreImageComponentItem({
           {/** TODO: Update the  */}
           <Link
             href={`/artist/${getSlug(`${firstName} ${restOfName}`)}/image/${
-              index
+              index + 1
             }`}
             className="hover:underline text-[10px] pl-1 md:pl-0 md:text-xs flex flex-row justify-center"
           >

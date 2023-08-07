@@ -43,7 +43,7 @@ export default function ImageGridItem({ link }: ImageGridItemProps) {
             <Link href={`/artist/${getSlug(artistName)}`} className="underline text-xs">
               View Artist
             </Link>
-            <Link href={`/artist/${getSlug(artistName)}/image/${imageNumber}`} className="underline text-xs">
+            <Link href={`/artist/${getSlug(artistName)}/image/${imageNumberStr}`} className="underline text-xs">
               View Image
             </Link>
           </div>
