@@ -1,9 +1,13 @@
-"use client";
-
 import CustomButton from "@/components/CustomButton";
 import LongBlueLineAnimate from "@/components/LongBlueLineAnimate";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "More information about us at Notes of Old"
+}
 
 /**
  * About Us Page

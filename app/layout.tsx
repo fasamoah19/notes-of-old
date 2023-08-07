@@ -8,7 +8,10 @@ import Footer from "@/components/FooterComponent";
 const libreFranklin = Libre_Franklin({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Notes of Old",
+  title: {
+    template: "%s | Notes of Old",
+    default: "Notes of Old"
+  },
   description: "A gallery website for Jazz musicians of the 50s, 60s and 70s",
 };
 
